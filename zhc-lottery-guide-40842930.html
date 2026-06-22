@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国体彩 · 智汇彩票信息页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5f9fc;
+            color: #1a2b3c;
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2rem 0 3rem;
+        }
+
+        /* 主视觉 hero */
+        .hero {
+            background: linear-gradient(135deg, #0b4f5c 0%, #1a7f8c 70%, #39a3ad 100%);
+            border-radius: 32px;
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 12px 28px rgba(0, 60, 70, 0.18);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 360px;
+            height: 360px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            opacity: 0.92;
+            font-weight: 350;
+        }
+
+        /* 网格卡片区 */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin: 2.8rem 0 1.5rem;
+            color: #0b4f5c;
+            border-left: 6px solid #1a7f8c;
+            padding-left: 1rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.6rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 6px 18px rgba(0, 50, 60, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.25s;
+            border: 1px solid #e3eff2;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 80, 90, 0.12);
+        }
+
+        .card .emoji-icon {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #083c47;
+            margin-bottom: 0.6rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #2a4a55;
+            margin-bottom: 0.2rem;
+        }
+
+        /* 人群/场景双卡片（风格微差） */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin: 2rem 0 2.5rem;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem 1.8rem;
+            border: 1px solid #dae8ec;
+            box-shadow: 0 4px 12px rgba(0, 60, 70, 0.04);
+        }
+
+        .info-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0b4f5c;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-card li {
+            padding: 0.5rem 0 0.5rem 1.8rem;
+            position: relative;
+            color: #1f3e48;
+            border-bottom: 1px solid #ecf3f5;
+        }
+
+        .info-card li:last-child {
+            border-bottom: none;
+        }
+
+        .info-card li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #2897a6;
+            font-weight: 600;
+        }
+
+        /* 自然链接段落 */
+        .natural-link-box {
+            background: #e8f3f6;
+            border-radius: 28px;
+            padding: 2rem 2.2rem;
+            margin: 2.8rem 0 1.8rem;
+            border-left: 6px solid #1a7f8c;
+        }
+
+        .natural-link-box p {
+            font-size: 1.1rem;
+            color: #1b3d47;
+        }
+
+        .natural-link-box a {
+            color: #0a5f6b;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid #58b5c2;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .natural-link-box a:hover {
+            color: #05323b;
+            border-bottom-color: #05323b;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem 2rem;
+            margin-top: 2rem;
+            border: 1px solid #cde1e6;
+        }
+
+        .faq-mini h4 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #0b4f5c;
+            margin-bottom: 0.6rem;
+            letter-spacing: 0.5px;
+        }
+
+        .faq-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e1edf0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item strong {
+            color: #083c47;
+            display: inline-block;
+            margin-right: 0.4rem;
+        }
+
+        .faq-item span {
+            color: #1b4d58;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b7d87;
+            border-top: 1px solid #d1e2e7;
+            padding-top: 2rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 680px) {
+            body {
+                padding: 0 12px;
+            }
+
+            .hero {
+                padding: 2rem 1.2rem;
+                border-radius: 24px;
+            }
+
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .two-col {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+            .natural-link-box {
+                padding: 1.5rem 1.2rem;
+            }
+
+            .faq-mini {
+                padding: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Hero 主视觉 -->
+    <section class="hero">
+        <h1>智汇彩票 · 中国体彩</h1>
+        <p>快速识别体彩用途、玩法与适用人群，一站式了解国家公益彩票信息。</p>
+    </section>
+
+    <!-- 用途卡片（信息卡片式） -->
+    <h2 class="section-title">📌 核心用途</h2>
+    <div class="card-grid">
+        <div class="card">
+            <span class="emoji-icon">🏟️</span>
+            <h3>体育赛事竞猜</h3>
+            <p>竞彩足球、篮球等主流赛事，基于赛果的固定奖金游戏，规则透明。</p>
+        </div>
+        <div class="card">
+            <span class="emoji-icon">🎲</span>
+            <h3>数字乐透型</h3>
+            <p>超级大乐透、排列3/5等经典数字游戏，奖级分布清晰，开奖公开。</p>
+        </div>
+        <div class="card">
+            <span class="emoji-icon">🔄</span>
+            <h3>即开型彩票</h3>
+            <p>顶呱刮主题票，即买即开，票面设计丰富，适合即时娱乐。</p>
+        </div>
+        <div class="card">
+            <span class="emoji-icon">📊</span>
+            <h3>数据查询工具</h3>
+            <p>走势图表、历史开奖、奖金试算，辅助购彩参考与理性分析。</p>
+        </div>
+    </div>
+
+    <!-- 适合人群 + 常用场景（双列布局） -->
+    <div class="two-col">
+        <div class="info-card">
+            <h3>👥 适合人群</h3>
+            <ul>
+                <li>体育爱好者，关注赛事并希望增加观赛趣味</li>
+                <li>数字游戏玩家，偏好固定规则与概率型娱乐</li>
+                <li>理性购彩者，注重信息公开、资金安全</li>
+                <li>公益理念认同者，通过购彩支持社会公益事业</li>
+            </ul>
+        </div>
+        <div class="info-card">
+            <h3>🧩 使用场景</h3>
+            <ul>
+                <li>赛前分析：查询球队数据、历史交锋与赔率变动</li>
+                <li>开奖核对：快速查看最新开奖号码与中奖分布</li>
+                <li>策略记录：利用工具追踪个人投注习惯与盈亏</li>
+                <li>资讯获取：了解派奖活动、公益金用途公告</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 自然链接段落（核心：将「中国体彩」嵌入句子） -->
+    <div class="natural-link-box">
+        <p>
+            如果你希望快速了解体彩游戏规则、查询开奖结果或获取公益金数据，
+            可直接访问 <a href="https://zhc-lottery.com">中国体彩</a> 网站，
+            该平台聚合了竞彩、乐透、即开等多种信息，并持续更新权威公告与玩法说明。
+            无论你是初次接触还是长期关注，都能在这里找到清晰的组织结构。
+        </p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <h4>❓ 常见问题摘要</h4>
+        <div class="faq-item">
+            <strong>Q：</strong><span>体彩与福彩有何不同？</span>
+            <br><span style="color:#2a5f6b;">A：体彩由国家体育总局体育彩票管理中心发行，公益金主要用于体育事业；福彩由民政部发行，公益金用于社会福利。</span>
+        </div>
+        <div class="faq-item">
+            <strong>Q：</strong><span>如何查询历史开奖数据？</span>
+            <br><span style="color:#2a5f6b;">A：在对应游戏页面选择期号或日期即可查看完整开奖号码、奖池及中奖注数。</span>
+        </div>
+        <div class="faq-item">
+            <strong>Q：</strong><span>网站是否提供模拟选号？</span>
+            <br><span style="color:#2a5f6b;">A：部分工具支持随机选号与号码走势分析，帮助用户理解概率分布，不构成推荐。</span>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+        理性购彩 · 量力而行 · 公益体彩 乐善人生
+    </div>
+
+</div>
+</body>
+</html>
